@@ -6,7 +6,7 @@ pipeline {
         stage('Submit Stack') {
             steps {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh "aws cloudformation create-stack --stack-name ec2-single-instance --template-body file://ec2-single-instance.json --region 'us-east-1'"
+            sh "aws cloudformation create-stack --stack-name ec2-single-instance --template-body file://0-ec2-with-sg-eip.yaml --region 'us-east-1'"
                 }
               }
              }
